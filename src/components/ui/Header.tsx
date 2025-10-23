@@ -5,14 +5,16 @@ import { Fragment, useState } from "react";
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a
     href={href}
-    className="relative px-1 after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-0.5 after:bg-indigo-500 after:w-0 after:transition-all after:duration-200 hover:after:left-0 hover:after:w-full hover:text-indigo-600"
+    className="relative px-1 after:content-[''] 
+    after:absolute after:left-1/2 after:bottom-0 after:h-0.5 after:bg-indigo-500 after:w-0 after:transition-all after:duration-200 
+    hover:after:left-0 hover:after:w-full hover:text-indigo-600"
   >
     {children}
   </a>
 );
 
 const links = [
-  { name: "Home", href: "#home" },
+  { name: "Inicio", href: "#home" },
   { name: "Servicios", href: "#services" },
   { name: "Sobre mí", href: "#about" },
   { name: "Contacto", href: "#contact" },
