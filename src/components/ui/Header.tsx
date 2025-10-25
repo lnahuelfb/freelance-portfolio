@@ -1,38 +1,50 @@
 "use client";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import { motion } from "framer-motion";
 
 const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
+  <motion.a
     href={href}
+    whileHover={{ color: "#4f46e5" }} // indigo-600
+    transition={{ duration: 0.2 }}
     className="relative px-1 after:content-[''] 
-    after:absolute after:left-1/2 after:bottom-0 after:h-0.5 after:bg-indigo-500 after:w-0 after:transition-all after:duration-200 
-    hover:after:left-0 hover:after:w-full hover:text-indigo-600"
+      after:absolute after:left-1/2 after:bottom-0 after:h-0.5 after:bg-indigo-500 after:w-0 after:transition-all after:duration-200 
+      hover:after:left-0 hover:after:w-full"
   >
     {children}
-  </a>
+  </motion.a>
 );
 
 const links = [
-  { name: "Inicio", href: "#home" },
-  { name: "Servicios", href: "#services" },
-  { name: "Sobre mí", href: "#about" },
-  { name: "Contacto", href: "#contact" },
+  { name: "Inicio", href: "/#home" },
+  { name: "Servicios", href: "/#services" },
+  { name: "Sobre mí", href: "/#about" },
+  { name: "Contacto", href: "/#contact" },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header role="banner" className="bg-white text-gray-900 shadow-md fixed w-full z-50">
+    <motion.header
+      role="banner"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="bg-white text-gray-900 shadow-md fixed w-full z-50"
+    >
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-        {/* Nombre como marca personal, clickeable */}
-        <a
-          href="#home"
+
+        {/* Marca personal */}
+        <motion.a
+          href="/#home"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
           className="text-2xl font-bold tracking-tight transition-colors duration-200 hover:text-indigo-600"
         >
           Nahuel Beschtedt
-        </a>
+        </motion.a>
 
         {/* Navegación desktop */}
         <nav role="navigation" className="hidden md:flex space-x-6 text-sm font-medium tracking-wide">
@@ -86,7 +98,7 @@ const Header = () => {
           </Menu>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
