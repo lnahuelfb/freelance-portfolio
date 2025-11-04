@@ -4,6 +4,7 @@ import { useState, Fragment } from "react";
 import Link from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
+import Divition from "@/components/ui/Divition";
 
 const services: {
   title: string;
@@ -85,13 +86,7 @@ const Services = () => {
             Servicios que ofrezco
           </motion.h2>
 
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: "3rem" }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="h-1 mx-auto bg-indigo-500 rounded-full mb-8"
-          />
+          <Divition/>
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}

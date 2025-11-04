@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Divition from "@/components/ui/Divition";
 
 const Hero = () => {
   return (
@@ -20,13 +21,8 @@ const Hero = () => {
         </motion.h1>
 
         {/* Separador visual animado */}
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: "3rem" }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="h-1 mx-auto bg-indigo-500 rounded-full"
-        />
-
+        <Divition />
+        
         {/* Subtítulo */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}

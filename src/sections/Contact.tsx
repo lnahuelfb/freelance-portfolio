@@ -1,14 +1,20 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Divition from "@/components/ui/Divition";
+import SuccessToast from "@/components/ui/SuccessToast";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Acá iría la lógica de envío (API, servicio externo, etc.)
     setSubmitted(true);
+
+    // Cierre automático después de 5 segundos
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 5000);
   };
 
   return (
@@ -28,13 +34,7 @@ const Contact = () => {
           Contacto
         </motion.h2>
 
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "3rem" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="h-1 mx-auto bg-indigo-500 rounded-full"
-        />
+        <Divition />
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -48,15 +48,7 @@ const Contact = () => {
 
         <AnimatePresence>
           {submitted ? (
-            <motion.p
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
-              className="text-green-600 font-semibold"
-            >
-              Gracias por tu mensaje. Te responderé pronto.
-            </motion.p>
+            <SuccessToast onClose={() => setSubmitted(false)} />
           ) : (
             <motion.form
               onSubmit={handleSubmit}
