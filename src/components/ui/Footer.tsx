@@ -22,12 +22,20 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Nombre y año */}
         <div className="text-sm text-center md:text-left">
-          <p className="font-semibold text-gray-900">Nahuel Beschtedt</p>
-          <p className="text-xs text-gray-500">© {new Date().getFullYear()} Todos los derechos reservados</p>
+          <p className="font-semibold text-gray-900">
+            <strong>Nahuel Beschtedt</strong>
+          </p>
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} Todos los derechos reservados
+          </p>
         </div>
 
         {/* Navegación footer */}
-        <nav role="navigation" className="flex flex-wrap justify-center md:justify-end gap-4 text-sm font-medium tracking-wide">
+        <nav
+          role="navigation"
+          aria-label="Footer navigation"
+          className="flex flex-wrap justify-center md:justify-end gap-4 text-sm font-medium tracking-wide"
+        >
           {links.map((link) => (
             <NavLink key={link.href} href={link.href}>
               {link.name}
@@ -38,5 +46,6 @@ const Footer = () => {
     </footer>
   );
 };
+
 
 export default Footer;

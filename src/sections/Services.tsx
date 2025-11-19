@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, Fragment } from "react";
 import Link from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
@@ -11,25 +10,25 @@ const services: {
   description: string;
   type: "landing" | "portfolio" | null;
 }[] = [
-  {
-    title: "Landing pages que convierten",
-    description:
-      "Diseño y desarrollo de páginas rápidas, optimizadas y defendibles para captar leads y clientes.",
-    type: "landing",
-  },
-  {
-    title: "Portfolios personalizados",
-    description:
-      "Creamos portfolios únicos que reflejan tu marca personal o profesional, con layouts quirúrgicos y animaciones sutiles.",
-    type: "portfolio",
-  },
-  {
-    title: "Webs a medida",
-    description:
-      "Soluciones web escalables, trazables y adaptadas a tus necesidades. Desde la arquitectura hasta la documentación técnica.",
-    type: null,
-  },
-];
+    {
+      title: "Landing pages que convierten",
+      description:
+        "Diseño y desarrollo de landings rápidas, optimizadas para SEO y pensadas para captar leads y clientes.",
+      type: "landing",
+    },
+    {
+      title: "Portfolios profesionales",
+      description:
+        "Portfolios únicos que muestran tu trabajo con claridad y estilo. Layouts quirúrgicos, animaciones sutiles y contacto integrado.",
+      type: "portfolio",
+    },
+    {
+      title: "Webs a medida",
+      description:
+        "Soluciones web escalables y trazables, adaptadas a tu negocio. Desde la arquitectura hasta la documentación técnica.",
+      type: null,
+    },
+  ];
 
 const projectExamples = {
   landing: [
@@ -40,26 +39,26 @@ const projectExamples = {
       href: "/landing/finanzas",
     },
     {
-      title: "Landing Clínica Estética",
+      title: "Landing Restaurante Japonés",
       description:
-        "Landing institucional para clínica estética, con servicios, testimonios y turnos online.",
-      href: "/landing/clinica",
+        "Landing institucional para restaurante japonés especializado en ramen artesanal. Menú, estética visual y reserva online.",
+      href: "/landing/ramen",
     },
   ],
   portfolio: [
     {
-      title: "Portfolio Branding Freelance",
+      title: "Portfolio Arquitecto de Interiores",
       description:
-        "Portfolio visual con filtros por tipo de proyecto, animaciones sutiles y contacto integrado.",
-      href: "/portfolio/branding",
+        "Presentación visual de proyectos arquitectónicos con renders 3D, planos interactivos y testimonios de clientes. Un portfolio que transmite confianza y profesionalismo desde el primer scroll.",
+      href: "/portfolio/arquitecto",
     },
     {
-      title: "Portfolio Fotógrafo Editorial",
+      title: "Portfolio Diseñadora UX/UI",
       description:
-        "Portfolio con galerías por categoría, estilo narrativo y sección de bookings.",
-      href: "/portfolio/fotografo",
+        "Muestra de interfaces digitales con casos de estudio, prototipos navegables y métricas de impacto en conversión. Un portfolio pensado para vender ideas y diferenciarse en el mercado.",
+      href: "/portfolio/uxui",
     },
-  ],
+  ]
 };
 
 const Services = () => {
@@ -72,6 +71,7 @@ const Services = () => {
     <>
       <section
         id="services"
+        aria-label="Servicios"
         className="bg-gray-50 text-gray-900 pt-24 pb-20 px-4 scroll-mt-24"
       >
         <div className="max-w-5xl mx-auto text-center">
@@ -81,22 +81,23 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl font-bold tracking-tight mb-6"
+            className="text-3xl font-bold tracking-tight mb-8" // más espacio debajo del título
           >
             Servicios que ofrezco
           </motion.h2>
-
-          <Divition/>
+          <Divition />
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-700 text-base mb-10"
+            className="text-gray-700 text-base mt-16 mb-16 max-w-2xl mx-auto"
           >
-            Cada proyecto está pensado para ser modular, trazable y defendible ante cualquier equipo o cliente.
+            Cada proyecto está diseñado para ser <strong>modular, trazable y defendible</strong>.
+            Mi objetivo es que tu web no solo se vea bien, sino que <em>genere resultados reales</em>.
           </motion.p>
+
 
           <div className="grid gap-8 md:grid-cols-3 text-left">
             {services.map((service, index) => (
@@ -121,7 +122,7 @@ const Services = () => {
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={() => openModal(service.type as "landing" | "portfolio")}
+                    onClick={() => openModal(service.type!)}
                     className="mt-auto inline-block bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700 transition-colors duration-200"
                   >
                     Ver ejemplos
@@ -155,7 +156,7 @@ const Services = () => {
 
                 <div className="space-y-4">
                   {modalType &&
-                    projectExamples[modalType].map((project, index) => (
+                    projectExamples[modalType!].map((project, index) => (
                       <div key={index} className="border rounded-md p-4">
                         <h3 className="text-lg font-semibold text-gray-800 mb-1">
                           {project.title}

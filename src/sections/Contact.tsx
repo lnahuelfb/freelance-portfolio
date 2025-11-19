@@ -11,7 +11,6 @@ const Contact = () => {
     e.preventDefault();
     setSubmitted(true);
 
-    // Cierre automático después de 5 segundos
     setTimeout(() => {
       setSubmitted(false);
     }, 5000);
@@ -20,10 +19,12 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-gray-50 text-gray-900 pt-24 pb-20 px-4 scroll-mt-24"
+      aria-label="Contacto"
+      className="bg-gray-50 text-gray-900 pt-24 pb-24 px-4 scroll-mt-24"
     >
-      <div className="max-w-xl mx-auto text-center space-y-8">
+      <div className="max-w-xl mx-auto text-center space-y-12">
 
+        {/* Título */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,18 +35,22 @@ const Contact = () => {
           Contacto
         </motion.h2>
 
-        <Divition />
+        <Divition/>
 
+        {/* Texto introductorio con más aire */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-base text-gray-700 leading-relaxed"
+          className="text-base text-gray-700 leading-relaxed mb-12"
         >
-          Si tenés un proyecto en mente o querés mejorar tu sitio actual, completá el formulario y te respondo sin vueltas.
+          ¿Tenés un proyecto en mente o querés mejorar tu sitio actual?  
+          Completá el formulario y te respondo sin vueltas.  
+          <strong className="text-indigo-600">Tu próxima landing o portfolio puede empezar hoy mismo.</strong>
         </motion.p>
 
+        {/* Formulario */}
         <AnimatePresence>
           {submitted ? (
             <SuccessToast onClose={() => setSubmitted(false)} />
@@ -99,9 +104,9 @@ const Contact = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="w-full bg-indigo-600 text-white py-3 rounded-md hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md"
+                className="w-full bg-indigo-600 text-white py-3 rounded-md hover:bg-indigo-700 transition-colors duration-200 shadow-sm hover:shadow-md font-semibold"
               >
-                Enviar mensaje
+                Enviar mi proyecto
               </motion.button>
             </motion.form>
           )}
